@@ -2,6 +2,7 @@ import pandas as pd
 import json, paho.mqtt.client as mqtt
 import sys
 
+
 #read charts
 df_job   = pd.read_csv("job.csv", parse_dates=["timestamp"])
 df_node  = pd.read_csv("node.csv",parse_dates=["timestamp"])
@@ -22,7 +23,7 @@ df_node = time_tr(df_node)
 def group(df):
     tag_besides = [c for c in df.columns if c != "timestamp"]
     s = df.groupby("timestamp").apply(lambda g: g[tag_besides].to_dict(orient="records"))
-    grouped = s.reset_index(name="entries")
+    grouped = s.reset_index(name="node_status")
     return grouped
 
 df_job_g = group(df_job)
@@ -73,7 +74,7 @@ client.subscribe("#")
 
 for row in pd.read_csv("merged_events.csv", parse_dates=["timestamp"]).itertuples():
     time_s = row.timestamp.isoformat()
-    node_status = row.entries
+    node_status = row.node_status
     job_datas = row.job_event
     has_job = bool(row.job_event)
 

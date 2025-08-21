@@ -1,0 +1,72 @@
+Metadata-Version: 2.1
+Name: examon
+Version: 0.6.6
+Summary: 
+Author: Jarrod Folino
+Author-email: jdfolino@icloud.com
+Requires-Python: >=3.9,<3.12
+Classifier: Programming Language :: Python :: 3
+Classifier: Programming Language :: Python :: 3.9
+Classifier: Programming Language :: Python :: 3.10
+Classifier: Programming Language :: Python :: 3.11
+Requires-Dist: alembic (>=1.11.2,<2.0.0)
+Requires-Dist: boto3 (>=1.28.37,<2.0.0)
+Requires-Dist: dataclasses-serialization (>=1.3.1,<2.0.0)
+Requires-Dist: examon-core (>=1.3.2)
+Requires-Dist: inquirer (>=3.1.1,<4.0.0)
+Requires-Dist: pygments (>=2.13.0,<3.0.0)
+Requires-Dist: pyinputplus (>=0.2.12,<0.3.0)
+Requires-Dist: pymongo (>=4.5.0,<5.0.0)
+Requires-Dist: requests (>=2.31.0,<3.0.0)
+Requires-Dist: simple-term-menu (==1.6.1)
+Requires-Dist: sqlalchemy (>=2.0.19,<3.0.0)
+Description-Content-Type: text/markdown
+
+# ExamOn
+
+## What is ExamOn
+* Learning Python Content Management System (LPCMS) 
+
+### Features
+* Generate content from plain Python code
+* Automatic categorisation of content
+
+
+## Prequisites
+
+* Python 3.9.16 or later
+* Pip3
+
+## Quick Start
+
+```shell
+pip install examon
+examon init
+examon package install
+examon
+```
+
+### Customising Your Exam
+
+#### Set the active repos
+
+Examon will only use questions from repositories you have added and are marked as active
+
+```shell
+examon repos list
+examon repos add_active <repo name>
+```
+
+* Use the tag filter
+
+```shell
+examon run --tags "<tag_one>, <tag_two>"
+```
+
+## Active Exam Repositories
+
+## Creating your own Exam
+
+## Security
+
+## Roadmap

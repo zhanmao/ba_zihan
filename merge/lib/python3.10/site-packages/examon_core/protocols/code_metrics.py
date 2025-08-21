@@ -1,0 +1,6 @@
+from typing import Dict, Protocol
+
+
+class CodeMetricsProtocol(Protocol):
+    def __init__(self, code: str): ...
+    def run(self) -> Dict[str, float]: ...

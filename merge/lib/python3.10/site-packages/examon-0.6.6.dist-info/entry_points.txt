@@ -1,0 +1,3 @@
+[console_scripts]
+examon=examon.view.cli.main:process_command
+

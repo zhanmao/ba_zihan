@@ -9,7 +9,10 @@ networks:
 
 services:
   examon:
+<<<<<<< HEAD
     restart: unless-stopped
+=======
+>>>>>>> master
     build:
       context: .
     image: examonhpc/examon:0.2.2
@@ -28,6 +31,10 @@ services:
       options:
         max-size: "10m"
         max-file: "1"
+<<<<<<< HEAD
+=======
+    restart: always
+>>>>>>> master
     ports:
       - "1883:1883"
       - "5000:5000"
@@ -38,6 +45,7 @@ services:
     depends_on:
       cassandra:
         condition: service_healthy
+<<<<<<< HEAD
     #mosquitto:
     #image: eclipse-mosquitto
     #restart: unless-stopped
@@ -51,6 +59,14 @@ services:
     build:
       context: ./docker/grafana
     image: examonhpc/grafana:7.3.10 
+=======
+  
+
+
+
+  grafana:
+    image: grafana/grafana:9.5.15
+>>>>>>> master
     logging:
       driver: json-file
       options:
@@ -64,9 +80,15 @@ services:
     networks:
       - examon_net
     environment:
+<<<<<<< HEAD
       - GF_PANELS_DISABLE_SANITIZE_HTML=true
       - GF_SECURITY_ADMIN_PASSWORD=Password
       - GF_INSTALL_PLUGINS=ae3e-plotly-panel 0.4.0,grafana-piechart-panel,yesoreyeram-infinity-datasource 0.8.8,marcusolsson-gantt-panel 0.7.5,flant-statusmap-panel 0.5.1,gapit-htmlgraphics-panel 1.3.3
+=======
+    - GF_PANELS_DISABLE_SANITIZE_HTML=true
+    - GF_SECURITY_ADMIN_PASSWORD=Password
+    - GF_INSTALL_PLUGINS=ae3e-plotly-panel 0.4.0,grafana-piechart-panel,yesoreyeram-infinity-datasource 0.8.8,marcusolsson-gantt-panel 0.7.5,flant-statusmap-panel 0.5.1,gapit-htmlgraphics-panel 1.3.3
+>>>>>>> master
     depends_on:
       - kairosdb
 
@@ -87,7 +109,20 @@ services:
     environment:      
       - CASSANDRA_HOST_LIST=cassandra:9042
     depends_on:
+<<<<<<< HEAD
       - cassandra
+=======
+      cassandra:
+        condition: service_healthy ##
+    entrypoint:
+      - /bin/sh
+      - -lc
+      - |
+        echo "[wait] sleep 60s for cassandra:9042 ..."
+        sleep 60
+        exec /usr/bin/config-kairos.sh
+    
+>>>>>>> master
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8083/api/v1/health/check"]
       interval: 30s
@@ -95,6 +130,13 @@ services:
       retries: 6
       start_period: 120s
 
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> master
   cassandra:
     build:
       context: ./docker/cassandra
@@ -116,12 +158,20 @@ services:
       - CASSANDRA_BROADCAST_ADDRESS=cassandra
       - CASSANDRA_START_RPC=true
       - CASSANDRA_LISTEN_ADDRESS=auto
+<<<<<<< HEAD
+=======
+      #- CASSANDRA_RPC_ADDRESS=0.0.0.0 ###
+>>>>>>> master
     healthcheck:
       test: ["CMD-SHELL", "nodetool status | grep UN"]
       interval: 30s
       timeout: 10s
       retries: 6
+<<<<<<< HEAD
       start_period: 120s
+=======
+      start_period: 180s ##120
+>>>>>>> master
 
 volumes:
   cassandra_volume:

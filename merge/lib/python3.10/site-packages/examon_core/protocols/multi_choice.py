@@ -1,0 +1,6 @@
+from typing import List, Protocol
+
+
+class MultiChoiceProtocol(Protocol):
+    def __init__(self, answer: str, choices: List[str]): ...
+    def build(self) -> List[str]: ...

@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #!/home/zhanmao/examon-master/merge/bin/python3
+=======
+#!/home/zhanmao/examon/merge/bin/python3
+>>>>>>> master
 # -*- coding: utf-8 -*-
 import re
 import sys

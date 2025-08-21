@@ -11,7 +11,11 @@ import zlib
 import gzip 
 import json
 import struct
+<<<<<<< HEAD
 import StringIO
+=======
+import io
+>>>>>>> master
 import logging
 import paho.mqtt.client as mosquitto
 
@@ -83,7 +87,11 @@ class Mqtt(object):
         """
             Compress payload. TODO: replace with blosc
         """
+<<<<<<< HEAD
         s = StringIO.StringIO()
+=======
+        s = io.StringIO()
+>>>>>>> master
         with gzip.GzipFile(fileobj=s, mode='w') as g:
             g.write(payload)
         return s.getvalue()
@@ -109,7 +117,11 @@ class Mqtt(object):
             if comp:
                 payload = self._compress(payload)  # TODO: find a better way. This manage both strings and floats
             # build topic 
+<<<<<<< HEAD
             topic = '/'.join([(val).replace('/','_').encode('utf-8') for pair in metric['tags'].items() for val in pair])
+=======
+            topic = '/'.join([(val).replace('/','_').encode('utf-8') for pair in list(metric['tags'].items()) for val in pair])
+>>>>>>> master
             topic += '/' + (metric['name']).encode('utf-8')
             # sanitize
             topic = topic.replace(' ','_').replace('+','_').replace('#','_')

@@ -1,8 +1,16 @@
 FROM examonhpc/examon:0.2.0
+<<<<<<< HEAD
+=======
+FROM python:3.11-slim
+WORKDIR /app
+RUN pip install --no-cache-dir flask requests pandas paho-mqtt
+CMD ["python", "trans_graph_grafana.py"]
+>>>>>>> master
 
 ENV EXAMON_HOME /etc/examon_deploy/examon
 
 # Create a backup of the existing sources.list
+<<<<<<< HEAD
 #RUN mv /etc/apt/sources.list /etc/apt/sources.list.backup
 
 # Create a new sources.list file
@@ -10,6 +18,15 @@ ENV EXAMON_HOME /etc/examon_deploy/examon
 
 # Debian strech moved to archived
 #RUN echo "deb https://debian.mirror.garr.it/debian-archive/ stretch main" > /etc/apt/sources.list
+=======
+RUN mv /etc/apt/sources.list /etc/apt/sources.list.backup
+
+# Create a new sources.list file
+RUN touch /etc/apt/sources.list
+
+# Debian strech moved to archived
+RUN echo "deb https://debian.mirror.garr.it/debian-archive/ stretch main" > /etc/apt/sources.list
+>>>>>>> master
 
 
 # Install dependencies
@@ -19,7 +36,11 @@ RUN apt-get update && apt-get install -y \
     libffi-dev \
     build-essential \
     libssl-dev \
+<<<<<<< HEAD
     python3-dev \
+=======
+    python-dev \
+>>>>>>> master
 	&& rm -rf /var/lib/apt/lists/*
 
 # copy app

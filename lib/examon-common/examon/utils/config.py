@@ -1,6 +1,10 @@
 
 import argparse
+<<<<<<< HEAD
 import ConfigParser
+=======
+import configparser
+>>>>>>> master
 
 
 class Config:
@@ -31,7 +35,11 @@ class Config:
         self.parser.add_argument('--mqtt-password', dest='MQTT_PASSWORD', help='MQTT password', default=None)
     
     def get_defaults(self):
+<<<<<<< HEAD
         config = ConfigParser.RawConfigParser(allow_no_value=True)
+=======
+        config = configparser.RawConfigParser(allow_no_value=True)
+>>>>>>> master
         config.optionxform = str  #preserve caps
         config.read(self.configfile) 
         for section in config.sections():
@@ -44,5 +52,9 @@ class Config:
     def get_conf(self):
         args = vars(self.parser.parse_args())
         conf = self.get_defaults()
+<<<<<<< HEAD
         conf.update({k: v for k, v in args.items() if v is not None})
+=======
+        conf.update({k: v for k, v in list(args.items()) if v is not None})
+>>>>>>> master
         return conf

@@ -56,12 +56,17 @@ class ExamonApp(Executor):
     def run(self):
         self.set_logging()
         if ('stop' == self.runmode):                        
+<<<<<<< HEAD
             print " Terminating daemon..."
+=======
+            print(" Terminating daemon...")
+>>>>>>> master
             self.logger.info("Terminating daemon...")
             self.daemon.stop()
             sys.exit(0)
         elif self.runmode in ['run','start','restart']:
             if self.runmode == 'start':
+<<<<<<< HEAD
                 print "Daemonize.."
                 self.daemon.start()
             elif self.runmode == 'restart':
@@ -70,4 +75,14 @@ class ExamonApp(Executor):
             else:
                 pass
             print "Starting jobs..."
+=======
+                print("Daemonize..")
+                self.daemon.start()
+            elif self.runmode == 'restart':
+                print("Restarting Daemon..")
+                self.daemon.restart()
+            else:
+                pass
+            print("Starting jobs...")
+>>>>>>> master
             self.exec_par()

@@ -5,7 +5,11 @@ import time
 import json
 import logging
 import collections
+<<<<<<< HEAD
 import thread 
+=======
+import _thread 
+>>>>>>> master
 
 from threading import Timer
 from examon.db.kairosdb import KairosDB
@@ -42,7 +46,11 @@ class SensorReader:
 
     def add_tag_v(self, v):
         """Sanitize tag values"""
+<<<<<<< HEAD
         if (v is not None) and (v is not u'') and (v is not 'None'):
+=======
+        if (v is not None) and (v is not '') and (v is not 'None'):
+>>>>>>> master
             ret = v.replace(' ','_').replace('/','_').replace('+','_').replace('#','_')
         else:
             ret = '_'
@@ -50,8 +58,13 @@ class SensorReader:
 
     def add_payload_v(self, v):
         """Sanitize payload values"""
+<<<<<<< HEAD
         if (v is not None) and (v is not u'') and (v is not 'None'):
             if isinstance(v, basestring):
+=======
+        if (v is not None) and (v is not '') and (v is not 'None'):
+            if isinstance(v, str):
+>>>>>>> master
                 ret = v.replace(';','_')
             else:
                 ret = v

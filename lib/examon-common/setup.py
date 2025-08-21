@@ -10,9 +10,16 @@ setup(name='examon-common',
       license='MIT',
       packages=['examon', 'examon.plugin', 'examon.utils', 'examon.db', 'examon.transport'],      
       install_requires=[
+<<<<<<< HEAD
           'requests == 2.21.0',
           'paho-mqtt == 1.4.0',
           'futures == 3.2.0',
+=======
+          #'requests == 2.21.0',
+          'requests>=2.31,<3.0',
+          'paho-mqtt == 1.4.0',
+          #'futures == 3.2.0',
+>>>>>>> master
           'setuptools == 40.6.3',
           'concurrent-log-handler == 0.9.16',
           'portalocker == 1.7.1'

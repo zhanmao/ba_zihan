@@ -1,0 +1,5 @@
+requests<3.0,>=2.31
+paho-mqtt==1.4.0
+setuptools==40.6.3
+concurrent-log-handler==0.9.16
+portalocker==1.7.1

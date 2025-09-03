@@ -8,12 +8,12 @@ import pandas as pd
 import requests
 from paho.mqtt.client import Client, MQTTv311
 
-# ---------- 配置 ----------
+
 BROKER = "localhost"
 PORT = 1883
 TOPIC = "metric/test"
 KAIROS = "http://localhost:8083/api/v1/datapoints"
-CSV_PATH = "merged_events.csv"  # 需要存在并包含 timestamp 列
+CSV_PATH = "merged_events.csv" 
 # -------------------------
 
 
@@ -105,7 +105,6 @@ def build_task_points(df: pd.DataFrame):
     return out
 
 
-# ---------- MQTT -> KairosDB 桥 ----------
 def on_message(cli, _, msg):
     try:
         r = requests.post(KAIROS, data=msg.payload, headers={"Content-Type": "application/json"})
@@ -116,7 +115,7 @@ def on_message(cli, _, msg):
 
 
 def main():
-    # 读取 CSV
+   
     try:
         df = pd.read_csv(CSV_PATH, parse_dates=["timestamp"])
     except Exception as e:
@@ -128,7 +127,7 @@ def main():
         print("[Warn] No datapoints built from CSV. Check columns: timestamp/event/task_id or job_event.")
         return
 
-    # 发布端：将 CSV 转换的消息发到 MQTT
+   
     pub_cli = Client(client_id="csv2mqtt_pub", protocol=MQTTv311)
     pub_cli.connect(BROKER, PORT, 30)
     pub_cli.loop_start()
@@ -155,4 +154,5 @@ def main():
 
 
 if __name__ == "__main__":
+
     main()

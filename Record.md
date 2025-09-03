@@ -1,12 +1,20 @@
 # Labmarkdown Documentation
 
-##how to run
-1.activate: source name/bin/activate
-2.docker exec -it examon-examon-1 bash -c "supervisorctl start plugins:random_pub"
-3.run input\trans_graph_grafana.py
-
-
-
+## how to run
+1. `docker compose up -d`
+2. (optional) `docker compose ps` to check all the container are healthy
+3. run `source merge/bin/activate`
+4. run `docker exec -it examon-examon-1 bash -c "supervisorctl start plugins:random_pub"`
+5. run the programm
+    * test_json.py:send random number to kariosdb, timestamp eqaul to realtime.
+    * merge.py:merge the job and node chart, output to grafana dashboard as 0/1 value.
+    * trans_gragh.py: output the job and node information to dashapp
+    * trans_graph_copy: output the job and node information to kariosdb
+6. open `http://localhost:3000/`
+7. open `Configuration\Data Sources`, search KariosDB
+8. edit:URL`http://kairosdb:8083`, Access`Server`
+9. Dashboard → Add new panel
+10. enter the metric,tags in your code
 
 
 
@@ -127,4 +135,5 @@ docker exec -it examon-examon-1 bash -c "supervisorctl start plugins:random_pub"
 
 activate plugin: supervisorctl <command> <plugin-name>
 >>>>>>> master
+
 

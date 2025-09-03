@@ -100,7 +100,7 @@ def build_task_points(df: pd.DataFrame):
     emitted_nodes = set()
 
     for _, r in work.iterrows():
-       #task point
+       #task points
         val = TASK_STATE_MAP.get(str(r["event"]).upper(), 2)
         task_id = str(r.get("task_id", ""))
         task_name = str(r.get("task_name", "")) if pd.notna(r.get("task_name", "")) else ""
@@ -169,7 +169,7 @@ def build_task_points(df: pd.DataFrame):
 
 
 #  MQTT to KairosDB bridge
-def on_message(cli, _, msg):
+def on_message(cli, _, msg):                                                 #####
     try:
         r = requests.post(KAIROS, data=msg.payload,
                           headers={"Content-Type":"application/json"})

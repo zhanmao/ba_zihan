@@ -1,4 +1,15 @@
 # Labmarkdown Documentation
+#how to run
+1.activate: source name/bin/activate
+2.docker exec -it examon-examon-1 bash -c "supervisorctl start plugins:random_pub"
+3.run input\trans_graph_grafana.py
+
+
+
+
+
+
+
 
 ## Set up and Installation
 
@@ -112,5 +123,6 @@ activate: source merge/bin/activate
 check random_pub status: sudo supervisorctl status random_pub 
 check metricname: curl -s http://localhost:8083/api/v1/metricnames | jq . 
 docker exec -it examon-examon-1 bash -c "supervisorctl start plugins:random_pub"
+
 activate plugin: supervisorctl <command> <plugin-name>
 >>>>>>> master

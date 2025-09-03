@@ -9,8 +9,8 @@
 6. run the programm
     * test_json.py:send random number to kariosdb, timestamp eqaul to realtime.
     * merge.py:merge the job and node chart, output to grafana dashboard as 0/1 value.
-    * trans_gragh.py: output the job and node information to dashapp
-    * trans_graph_copy: output the job and node information to kariosdb
+    * trans_graph_html.py: output the job and node information to dashapp
+    * trans_graph_grafana.py: output the job and node information to dashborad
 7. open `http://localhost:3000/`
 8. open `Configuration\Data Sources`, search KariosDB
 9. edit:URL`http://kairosdb:8083`, Access`Server`
@@ -82,6 +82,7 @@ docker exec -it examon-examon-1 bash -c "supervisorctl start plugins:random_pub"
 
 activate plugin: supervisorctl <command> <plugin-name>
 >>>>>>> master
+
 
 
 

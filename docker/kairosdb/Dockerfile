@@ -18,7 +18,7 @@ RUN set -eux ; \
 	apt-get install -y --no-install-recommends \
 	wget \
 	ca-certificates; \
-=======
+
 RUN set -eux; \
 	apt-get update; \
 	apt-get install -y --no-install-recommends \

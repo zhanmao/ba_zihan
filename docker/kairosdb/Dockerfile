@@ -11,7 +11,7 @@ RUN touch /etc/apt/sources.list
 # Add the new server repository for focal packages
 RUN echo "deb https://ubuntu.mirror.garr.it/ubuntu/ focal main" > /etc/apt/sources.list
 
-<<<<<<< HEAD
+
 RUN set -eux ; \
 	sed -i 's|https://ubuntu.mirror.garr.it/ubuntu|http://archive.ubuntu.com/ubuntu|g' /etc/apt/sources.list; \
 	apt-get update; \
@@ -25,7 +25,6 @@ RUN set -eux; \
 		wget \
                 ca-certificates \
 	; \
->>>>>>> master
 	rm -rf /var/lib/apt/lists/*
 
 # KairosDB
